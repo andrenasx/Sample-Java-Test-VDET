@@ -6,12 +6,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: LS Output
-        run: ls -a
-      - name: Checkout code
+        run: ls -R
+      - name: Checkout this repo code
         uses: actions/checkout@v3
+      - name: Checkout VDET-Action-test
+        uses: actions/checkout@v3
+        with:
+          repository: andrenax/VDET-Action-test
+          token: ${{ secrets.PAT }}          
+          path: ./.github/actions/VDET-Action-test
       - name: LS Output after checkout
-        run: ls -a
+        run: ls -R
       - name: VDET test
-        uses: andrenax/VDET-Action-test@v1
+        uses: ./.github/actions/VDET-Action-test/action.yaml
       - name: LS Output after VDET test
-        run: ls -a
+        run: ls -R
