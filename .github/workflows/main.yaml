@@ -9,16 +9,5 @@ jobs:
         run: ls -R
       - name: Checkout this repo code
         uses: actions/checkout@v3
-      - name: Checkout VDET-Action-test
-        uses: actions/checkout@v3
-        with:
-          repository: andrenax/VDET-Action-test
-          token: ${{ secrets.PAT }}
-          lfs: true
-          path: ./.github/actions/VDET-Action-test
       - name: LS Output after checkout
-        run: ls -R
-      - name: VDET test
-        uses: ./.github/actions/VDET-Action-test/action.yaml
-      - name: LS Output after VDET test
         run: ls -R
