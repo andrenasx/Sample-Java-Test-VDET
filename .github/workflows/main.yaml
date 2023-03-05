@@ -12,6 +12,6 @@ jobs:
       - name: LS Output after checkout
         run: ls -R
       - name: Run VDET
-        uses: VDET-Action-test@v1
+        uses: andrenasx/VDET-Action-test@v1
       - name: LS Output after VDET
         run: ls -R
