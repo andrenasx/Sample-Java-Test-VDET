@@ -14,6 +14,6 @@ jobs:
           pwd
           ls -R
       - name: Run VDET
-        uses: andrenasx/VDET-Action-test@v2
+        uses: andrenasx/VDET-Action-test@v1
       - name: LS Output after VDET
         run: ls -R
