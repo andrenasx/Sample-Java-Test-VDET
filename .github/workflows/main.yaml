@@ -17,3 +17,8 @@ jobs:
         uses: andrenasx/VDET-Action-test@v1
       - name: LS Output after VDET
         run: ls -R
+      - name: Upload VDET results
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: results.sarif
+          category: my-analysis-tool
