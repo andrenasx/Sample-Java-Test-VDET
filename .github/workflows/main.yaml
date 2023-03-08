@@ -11,10 +11,10 @@ jobs:
     steps:
       - name: Checkout this repo code
         uses: actions/checkout@v3
+      - name: Run VDET
+        uses: andrenasx/VDET-Action-test@main
+      - name: Upload VDET results
+        uses: github/codeql-action/upload-sarif@v2
         with:
-          fetch-depth: 2
-      - run: git checkout HEAD^
-      - name: LS Output after checkout
-        run: |
-          pwd
-          ls -R
+          sarif_file: results.sarif
+          category: my-analysis-tool
