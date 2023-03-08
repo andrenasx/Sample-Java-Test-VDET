@@ -20,8 +20,9 @@ jobs:
           fetch-depth: 2
 
       - name: Process files changed in the current commit
+        id: diff
         run: |
-          changedFiles=$(git diff --name-only HEAD^)
-          for file in $changedFiles; do
-            echo "Processing file: $file"
-          done
+          echo "changedFiles=$(git diff --name-only HEAD^)" >> $GITHUB_OUTPUT
+      
+      - name: Echo changed files
+        run: echo ${{ steps.diff.outputs.changedFiles }}
