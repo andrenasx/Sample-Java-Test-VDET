@@ -21,7 +21,11 @@ jobs:
 
       - name: Process files changed in the current commit
         id: diff
-        run: echo "$(git diff --name-status HEAD^)" >> "$GITHUB_OUTPUT"
+        run: |
+          mkdir /tmp
+          git diff --name-status HEAD^ > /tmp/changedFiles.txt
       
-      - name: Echo changed files
-        run: echo ${{ steps.diff.outputs.changedFiles }}
+      - name: lS changed files
+        run: |
+          ls -R
+          cat /tmp/changedFiles.txt
