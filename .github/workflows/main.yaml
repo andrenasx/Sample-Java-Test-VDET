@@ -4,17 +4,24 @@ name: VDET Action Test
 jobs:
   first_job:
     runs-on: ubuntu-latest
+
     permissions:
+      # only required for workflows in private repositories
       actions: read
       contents: read
+
+      # required
       security-events: write
+
     steps:
       - name: Checkout this repo code
         uses: actions/checkout@v3
-      - name: Run VDET
-        uses: andrenasx/VDET-Action-test@main
-      - name: Upload VDET results
-        uses: github/codeql-action/upload-sarif@v2
         with:
-          sarif_file: results.sarif
-          category: my-analysis-tool
+          fetch-depth: 2
+
+      - name: Process files changed in the current commit
+        run: |
+          changedFiles=$(git diff --name-only HEAD^)
+          for file in $changedFiles; do
+            echo "Processing file: $file"
+          done
