@@ -21,11 +21,9 @@ jobs:
 
       - name: Process files changed in the current commit
         id: diff
-        run: |
-          mkdir /tmp
-          git diff --name-status HEAD^ > /tmp/changedFiles.txt
+        run: git diff --name-status HEAD^ > changedFiles.txt
       
       - name: lS changed files
         run: |
           ls -R
-          cat /tmp/changedFiles.txt
+          cat changedFiles.txt
