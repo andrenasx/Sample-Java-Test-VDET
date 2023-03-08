@@ -22,7 +22,7 @@ jobs:
       - name: Process files changed in the current commit
         id: diff
         run: |
-          echo "changedFiles=$(git diff --name-only HEAD^)" >> $GITHUB_OUTPUT
+          echo "changedFiles=$(git diff --oneline --name-status HEAD^)" >> $GITHUB_OUTPUT
       
       - name: Echo changed files
         run: echo ${{ steps.diff.outputs.changedFiles }}
