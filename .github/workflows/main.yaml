@@ -21,9 +21,6 @@ jobs:
 
       - name: Process files changed in the current commit
         id: diff
-        run: git diff --name-status HEAD^ > changedFiles.txt
-      
-      - name: lS changed files
         run: |
-          ls -R
-          cat changedFiles.txt
+          echo $( IFS=$' '; echo "$(git diff --name-only HEAD^)" )
+          echo $( IFS=$' '; echo "$(git diff --name-only HEAD^)" ) >> $GITHUB_OUTPUT
