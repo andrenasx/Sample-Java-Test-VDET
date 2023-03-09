@@ -23,4 +23,4 @@ jobs:
         id: diff
         run: |
           changedFiles=$(git diff --name-only HEAD^)
-          echo "diff=$changedFiles" >> $GITHUB_OUTPUT
+          echo "diff=$changedFiles" >> "$GITHUB_OUTPUT"
