@@ -23,4 +23,4 @@ jobs:
         id: diff
         run: |
           echo $( IFS=$' '; echo "$(git diff --name-only HEAD^)" )
-          echo $( IFS=$' '; echo "$(git diff --name-only HEAD^)" ) >> $GITHUB_OUTPUT
+          echo "$( IFS=$' '; echo "$(git diff --name-only HEAD^)" )" >> "$GITHUB_OUTPUT"
