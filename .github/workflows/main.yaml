@@ -23,4 +23,9 @@ jobs:
         id: diff
         run: |
           changedFiles=$(git diff --name-only HEAD^)
-          echo "diff=$changedFiles" >> "$GITHUB_OUTPUT"
+          echo "files=$changedFiles" >> "$GITHUB_OUTPUT"
+
+      - name: Check if any files changed in the current commit
+        if: steps.diff.outputs.files != ''
+        run: |
+          echo "Files changed in the current commit: ${{ steps.diff.outputs.files }}"
