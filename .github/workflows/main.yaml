@@ -19,13 +19,8 @@ jobs:
         with:
           fetch-depth: 2
 
-      - name: Process files changed in the current commit
-        id: diff
-        run: |
-          changedFiles=$(git diff --name-only HEAD^)
-          echo "files=${changedFiles//$'\n'/ }" >> "$GITHUB_OUTPUT"
-
-      - name: Check if any files changed in the current commit
-        if: steps.diff.outputs.files != ''
-        run: |
-          echo "Files changed in the current commit: ${{ steps.diff.outputs.files }}"
+      - name: Run VDET
+        uses: andrenasx/VDET-Action-test@v1
+        with:
+          path: 'src/simplejavacalculator src/simplejavacalculatorTest'
+          files: 'src/simplejavacalculator/Calculator.java src/simplejavacalculatorTest/CalculatorTest.java'
