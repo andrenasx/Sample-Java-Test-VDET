@@ -19,6 +19,3 @@ jobs:
 
       - name: Run VDET
         uses: andrenasx/VDET-Action-test@main
-        with:
-          path: 'src/simplejavacalculator src/simplejavacalculatorTest'
-          files: 'src/simplejavacalculator/Calculator.java src/simplejavacalculatorTest/CalculatorTest.java'
