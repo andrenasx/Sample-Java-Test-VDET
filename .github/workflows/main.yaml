@@ -16,11 +16,19 @@ jobs:
     steps:
       - name: Checkout this repo code
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - name: Process files changed in the current commit
+        id: diff
+        run: |
+          changedFiles=$(git diff --name-only HEAD^)
+          echo "files=${changedFiles//$'\n'/ }" >> "$GITHUB_OUTPUT"
 
       - name: Run VDET
         uses: andrenasx/VDET-Action-test@main
         with:
-          files: 'src/simplejavacalculator3/UI.java src/simplejavacalculator3/Calculator.java src/simplejavacalculator3/BufferedImageCustom.java'
+          files: ${{ steps.diff.outputs.files }}
 
       - name: Upload VDET report
         uses: github/codeql-action/upload-sarif@v2
