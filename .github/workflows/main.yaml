@@ -20,7 +20,7 @@ jobs:
       - name: Run VDET
         uses: andrenasx/VDET-Action-test@main
         with:
-          paths: 'src/simplejavacalculator'
+          paths: 'src/simplejavacalculator src/simplejavacalculatorTest/'
 
       - name: Upload VDET report
         uses: github/codeql-action/upload-sarif@v2
